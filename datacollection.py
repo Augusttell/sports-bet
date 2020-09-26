@@ -17,11 +17,31 @@ def return_fixture_ids(header, league_id, date):
 def fixture_predictions(header, fixture_id):
     predictions = requests.get("https://api-football-v1.p.rapidapi.com/v2/predictions/" + str(fixture_id),
                                headers=header).json()
-    percentage=(int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["winning_percent"]["goals_home"])[0]),
-                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["winning_percent"]["goals_away"])[0]),
+    percentage=(int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["forme"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["forme"]["away"])[0]),
+
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["att"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["att"]["away"])[0]),
+
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["def"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["def"]["away"])[0]),
+
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["fish_law"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["fish_law"]["away"])[0]),
+
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["h2h"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["h2h"]["away"])[0]),
+
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["goals_h2h"]["home"])[0]),
+                int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["comparison"]["goals_h2h"]["away"])[0]),
+
+                predictions["api"]["predictions"][0]["goals_home"],
+                predictions["api"]["predictions"][0]["goals_away"],
+
                 int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["winning_percent"]["home"])[0]),
                 int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["winning_percent"]["draws"])[0]),
                 int(re.findall('[0-9]+', predictions["api"]["predictions"][0]["winning_percent"]["away"])[0]),
+
                 "Hemma:" + predictions["api"]["predictions"][0]["teams"]["home"]["team_name"] + ", Borta: " + \
                 predictions["api"]["predictions"][0]["teams"]["away"]["team_name"])
     return percentage
