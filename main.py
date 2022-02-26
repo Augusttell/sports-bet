@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import datacollection as dc
 import os
+import tqdm
 
 
 # league_id=1329
