@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
-import datacollection as dc
+from data import datacollection as dc
 import os
-import tqdm
-
 
 # league_id=1329
 # date="2020-09-06"
@@ -13,7 +11,7 @@ import tqdm
 
 
 current_wd = os.getcwd()
-f = open("./apikey.txt", "r")
+f = open("../apikey.txt", "r")
 apikey = f.read()
 
 header = {"X-RapidAPI-Key": apikey}

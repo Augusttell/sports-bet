@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 # Setup
 current_wd = os.getcwd()
-f = open("./apikey.txt", "r")
+f = open("../apikey.txt", "r")
 apikey = f.read()
 
 
